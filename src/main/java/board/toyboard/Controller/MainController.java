@@ -21,17 +21,6 @@ public class MainController {
         return "hello toyBoard";
     }
 
-    @GetMapping("/util")
-    public PostDTO noName(){
-        PostDTO postDTO = new PostDTO();
-        postDTO.setContent("updateContent");
-        postDTO.setId(10L);
-        postDTO.setTitle("updateTitle");
-
-        postService.updatePost(postDTO);
-        return null;
-    }
-
     /*게시글 하나 검색*/
     @GetMapping("/post/{id}")
     public PostDTO getPost(@PathVariable int id){
@@ -55,8 +44,8 @@ public class MainController {
         post.setTitle(title);
 
         System.out.println("title: "+title+", content : "+content);
-        //로그인 처리하여 작성자에 User저장.
-        //post.setWriter();
+        //로그인 처리하여 writer필드에 User 엔터티 저장.
+        //post.setWriter( );
 
         postService.writePost(post);
     }
